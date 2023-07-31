@@ -16,3 +16,41 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+## ER図
+
+```mermaid
+erDiagram
+
+accounts ||--o{ accounts_tokens: ""
+accounts ||--o{ tasks: ""
+
+accounts {
+  integer id PK
+  string email
+  string hashed_password
+  naive_datetime confirmed_at
+  naive_datetime inserted_at
+  naive_datetime updated_at
+}
+
+accounts_tokens {
+  integer id PK
+  integer account_id Fk
+  binary token
+  string context
+  string sent_to
+  naive_datetime inserted_at
+}
+
+tasks {
+  integer id PK
+  integer account_id FK
+  string title
+  string memo
+  date date
+  boolean completed
+  naive_datetime inserted_at
+  naive_datetime updated_at
+}
+```
