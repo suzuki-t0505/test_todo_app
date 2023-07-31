@@ -8,17 +8,16 @@ defmodule TestTodoApp.Tasks do
 
   alias TestTodoApp.Tasks.Task
 
-  @doc """
-  Returns the list of tasks.
+  def list_tasks(account_id) do
+    Task
+    |> where([t], t.account_id == ^account_id and t.completed == false)
+    |> Repo.all()
+  end
 
-  ## Examples
-
-      iex> list_tasks()
-      [%Task{}, ...]
-
-  """
-  def list_tasks do
-    Repo.all(Task)
+  def list_completed_tasks(account_id) do
+    Task
+    |> where([t], t.account_id == ^account_id and t.completed == true)
+    |> Repo.all()
   end
 
   @doc """

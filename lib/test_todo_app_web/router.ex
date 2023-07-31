@@ -68,6 +68,8 @@ defmodule TestTodoAppWeb.Router do
       on_mount: [{TestTodoAppWeb.AccountAuth, :ensure_authenticated}] do
       live "/accounts/settings", AccountSettingsLive, :edit
       live "/accounts/settings/confirm_email/:token", AccountSettingsLive, :confirm_email
+
+      live "/todo", TodoLive, :summary
     end
   end
 
