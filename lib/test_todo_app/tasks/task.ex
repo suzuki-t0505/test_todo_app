@@ -7,7 +7,6 @@ defmodule TestTodoApp.Tasks.Task do
   schema "tasks" do
     field :completed, :boolean, default: false
     field :date, :date
-    field :memo, :string
     field :title, :string
     belongs_to :account, Account
 
@@ -17,7 +16,7 @@ defmodule TestTodoApp.Tasks.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:title, :memo, :date, :completed, :account_id])
-    |> validate_required([:title, :memo, :date, :completed])
+    |> cast(attrs, [:title, :date, :completed, :account_id])
+    |> validate_required([:title, :date, :completed])
   end
 end

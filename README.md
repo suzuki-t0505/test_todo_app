@@ -47,7 +47,6 @@ tasks {
   integer id PK
   integer account_id FK
   string title
-  string memo
   date date
   boolean completed
   naive_datetime inserted_at
